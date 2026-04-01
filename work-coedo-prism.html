@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COEDO PRISM - WORKS - NISHI KANAMI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&family=Zen+Old+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-work-detail">
+  <header class="header">
+    <nav class="header-nav">
+      <a href="index.html">HOME</a>
+      <a href="works.html">WORKS</a>
+      <a href="about.html">ABOUT</a>
+      <a href="index.html#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main class="work-detail">
+    <!-- Figma 1:419 https://www.figma.com/design/kTKaPvHE5kTtJ6r1PyapXi/Untitled?node-id=1-419 -->
+    <div class="work-detail-intro">
+      <div class="work-detail-intro-left">
+        <div class="work-detail-meta">
+          <p class="work-detail-client">株式会社協同商事</p>
+          <div class="work-detail-title-block">
+            <p>COEDO PRISM</p>
+            <p>パッケージデザイン</p>
+          </div>
+        </div>
+        <div class="work-detail-divider" aria-hidden="true">
+          <img src="images/works/detail-diagonal.svg" alt="" width="144" height="144">
+        </div>
+      </div>
+      <div class="work-detail-desc">
+        <p>COEDOビールの季節限定醸造 「プリズム-PRISM-」のパッケージデザインを担当しました。プリズムから透かし見たきらめく世界を、透明感のある配色でグラフィカルにデザインすることで、キレ、苦味、アロマが折り重なり、アルコールとホップのバランスの良さが輝く商品特徴を表現しました。</p>
+      </div>
+    </div>
+
+    <div class="work-detail-gallery">
+      <img src="images/works/prism-detail-1.png" alt="COEDO PRISM パッケージビジュアル1" width="1200" height="675" loading="lazy" decoding="async">
+      <img src="images/works/prism-detail-2.png" alt="COEDO PRISM パッケージビジュアル2" width="1200" height="675" loading="lazy" decoding="async">
+    </div>
+
+    <p class="work-detail-back">
+      <a href="works.html">← VIEW ALL WORKS</a>
+    </p>
+  </main>
+
+  <footer class="footer">
+    <button type="button" class="page-top" aria-label="ページトップへ">
+      <span class="page-top-icon"><img src="images/arrow-pagetop.svg" alt="" width="48" height="48" decoding="async"></span>
+      <span class="page-top-text">PAGE TOP</span>
+    </button>
+  </footer>
+
+  <script>
+    document.querySelector('.page-top').addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

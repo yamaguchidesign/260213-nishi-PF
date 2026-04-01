@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --header-h: 5.5rem;
+}
+
 body {
     font-family: "Bona Nova", serif;
     line-height: 1.6;
@@ -11,10 +15,20 @@ body {
     color: #000;
 }
 
+main {
+    padding-top: var(--header-h);
+}
+
 /* Header */
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
     width: 100%;
     padding: 2rem 3rem;
+    background: #fff;
 }
 
 .header-nav {
@@ -37,9 +51,19 @@ body {
     opacity: 0.6;
 }
 
+/* 先頭ブロック: MAIN JOB + ヒーローを合わせて 1 画面分 */
+.top-viewport-hero {
+    position: relative;
+    min-height: calc(100vh - var(--header-h));
+    min-height: calc(100svh - var(--header-h));
+    display: flex;
+    flex-direction: column;
+}
+
 /* Main Job */
 .main-job {
-    padding: 4rem 3rem;
+    flex: 0 0 auto;
+    padding: 2rem 4rem 0;
 }
 
 .main-job-title {
@@ -49,56 +73,182 @@ body {
     letter-spacing: 0.02em;
 }
 
-/* Design Section */
-.design-section {
-    padding: 0 3rem 2rem;
+/* Hero intro (Figma 1:16 — DESIGN & illustration | switch | collection + scroll) */
+.hero-intro {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 2rem 4rem 2.5rem;
 }
 
-.design-text {
+.hero-intro-inner {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    min-height: 0;
+}
+
+.hero-intro-left,
+.hero-intro-visual {
+    align-self: center;
+}
+
+.hero-intro-left {
+    flex: 1 1 0;
+    min-width: 0;
     font-family: "Bona Nova", serif;
-    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-size: clamp(2rem, 6vw, 4rem);
     font-weight: 400;
-    letter-spacing: 0.1em;
-    line-height: 1.6;
+    color: #111;
+    line-height: 1;
 }
 
-/* Collection Section */
-.collection-section {
-    padding: 0 3rem 2rem;
+.hero-intro-left p {
+    margin: 0;
+    line-height: normal;
 }
 
-.collection-caption {
+.hero-intro-visual {
+    flex-shrink: 0;
+    width: min(224px, 28vw);
+    height: min(400px, 50vw);
+    max-height: 55vh;
+}
+
+.hero-intro-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+}
+
+.hero-intro-right {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.hero-intro-right-copy {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 15px;
     font-family: "Bona Nova", serif;
-    font-size: 0.875rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.25rem;
+    font-size: clamp(1.125rem, 2.5vw, 2rem);
+    font-weight: 400;
+    color: #111;
+    text-align: right;
+    line-height: normal;
+    min-height: 0;
 }
 
-.collection-name {
+.hero-intro-right-copy p {
+    margin: 0;
+    width: 100%;
+}
+
+.hero-intro-scroll {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    z-index: 1;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
     font-family: "Bona Nova", serif;
-    font-size: 1rem;
-    letter-spacing: 0.15em;
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    font-weight: 400;
+    color: #111;
+    text-align: right;
+    line-height: normal;
+    white-space: nowrap;
 }
 
-/* Scroll Section */
-.scroll-section {
-    padding: 2rem 3rem;
+.hero-intro-scroll-line {
+    display: block;
 }
 
-.scroll-indicator {
-    font-family: "Bona Nova", serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
+.hero-intro-scroll-arrow {
+    display: block;
 }
 
-.scroll-indicator .arrow {
-    display: inline-block;
-    margin-left: 0.5rem;
+@media (max-width: 768px) {
+    .top-viewport-hero {
+        min-height: auto;
+    }
+
+    .main-job {
+        padding: 1.5rem 1.5rem 0;
+    }
+
+    .hero-intro {
+        flex: 0 1 auto;
+        padding: 1.5rem 1.5rem 2.5rem;
+    }
+
+    .hero-intro-inner {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        flex: 0 1 auto;
+        min-height: auto;
+        text-align: center;
+    }
+
+    .hero-intro-left,
+    .hero-intro-visual {
+        align-self: center;
+    }
+
+    .hero-intro-left {
+        text-align: center;
+    }
+
+    .hero-intro-visual {
+        width: min(200px, 55vw);
+        height: min(360px, 70vw);
+        max-height: none;
+    }
+
+    .hero-intro-right {
+        min-height: auto;
+        width: 100%;
+        max-width: 24rem;
+    }
+
+    .hero-intro-right-copy {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-intro-right-copy p {
+        width: auto;
+    }
+
+    .hero-intro-scroll {
+        right: 40px;
+        bottom: 40px;
+        align-items: flex-end;
+        text-align: right;
+        white-space: normal;
+    }
 }
 
-/* Works */
+/* Works (Figma 1:28) */
 .works {
-    padding: 4rem 3rem;
+    padding: 4rem 4rem;
 }
 
 .works-header {
@@ -135,115 +285,939 @@ body {
 
 .work-item {
     position: relative;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 20%;
     min-width: 140px;
     aspect-ratio: 1;
     text-decoration: none;
-    color: inherit;
+    color: #111;
+    /* 隣り合うセルで辺を共有（全周ボーダーを付けない）→ 破線の交差で太く見えない */
+    border-style: dashed;
+    border-color: #111;
+    border-width: 0 1px 1px 0;
+}
+
+.work-item:nth-child(5n + 1) {
+    border-left-width: 1px;
+}
+
+.work-item:nth-child(-n + 5) {
+    border-top-width: 1px;
 }
 
 .work-num {
     position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
+    top: 3px;
+    left: 2px;
     font-family: "Bona Nova", serif;
-    font-size: 1.25rem;
-    letter-spacing: 0.05em;
-    line-height: 1.25;
-    z-index: 1;
+    font-size: 1.5rem;
+    line-height: 1;
+    z-index: 2;
     background: #fff;
-    padding: 0.25rem 0.4rem;
-    border-radius: 4px;
+    padding: 4px;
+    min-width: 1.75em;
+    text-align: center;
 }
 
 .work-thumb {
     position: relative;
     width: 100%;
     height: 100%;
-    border: 1px dashed #999;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
 }
 
-.work-thumb::before {
-    content: "";
+.work-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1;
+    display: block;
+}
+
+.work-item:hover .work-thumb-img {
+    opacity: 0.92;
+}
+
+.work-item-featured:hover .work-thumb-img {
+    opacity: 1;
+}
+
+.work-thumb-featured {
+    position: relative;
+}
+
+.work-thumb-featured .work-thumb-base {
     position: absolute;
-    inset: 16px;
-    background: #f0f0f0 url("images/work-sample.png") center / cover no-repeat;
-    transition: filter 0.3s ease;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    filter: blur(18px);
+    transform: scale(1.05);
+    z-index: 0;
 }
 
-.work-item:hover .work-thumb::before {
-    filter: blur(30px);
+.work-thumb-featured .work-thumb-overlay-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(70%, 180px);
+    height: min(70%, 180px);
+    object-fit: cover;
+    z-index: 1;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    aspect-ratio: 1;
 }
 
-/* Work limited (08-10) */
-.work-thumb-limited::before {
-    display: none;
+.work-featured-copy {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    pointer-events: none;
+    text-align: center;
+    padding: 1rem;
 }
 
+.work-featured-year {
+    font-family: "Bona Nova", serif;
+    font-size: 1rem;
+    color: #111;
+}
+
+.work-featured-title {
+    font-family: "Bona Nova", serif;
+    font-size: 1.125rem;
+    color: #111;
+}
+
+.work-featured-sub {
+    font-family: "Bona Nova", serif;
+    font-size: 0.875rem;
+    color: #111;
+}
+
+div.work-item-limited {
+    cursor: default;
+}
+
+/* Work limited (08-10) — Figma */
 .work-thumb-limited {
     background: #fff;
 }
 
-.work-thumb-limited::after {
-    content: "";
+.work-limited-line {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cline x1='0' y1='0' x2='100' y2='100' stroke='%23999' stroke-width='0.5' stroke-dasharray='4 3'/%3E%3C/svg%3E") no-repeat center/100% 100%;
+    object-fit: fill;
     pointer-events: none;
 }
 
 .work-limited-text {
     position: absolute;
-    bottom: 16px;
-    right: 16px;
+    bottom: 18%;
+    right: 8%;
     font-family: "Bona Nova", serif;
-    font-size: 0.75rem;
+    font-size: 1.125rem;
     font-weight: 400;
-    letter-spacing: 0.1em;
-    color: #000;
+    letter-spacing: 0.02em;
+    color: #111;
     text-transform: uppercase;
     z-index: 1;
+    line-height: 1;
 }
 
-.work-thumb-overlay {
-    position: absolute;
-    inset: 16px;
+/* Profile (Figma 1:76) */
+.profile {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    justify-content: center;
-    gap: 0.25rem;
-    padding: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    justify-content: space-between;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding: 4rem 4rem;
+}
+
+.profile-images {
+    position: relative;
+    flex-shrink: 0;
+    width: min(676px, 100%);
+    height: 0;
+    max-width: 100%;
+}
+
+.profile-img {
+    position: absolute;
+    display: block;
+    width: calc(580 / 676 * 100%);
+    height: auto;
+    aspect-ratio: 580 / 387;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.profile-img-1 {
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.about-profile .profile-img-1 {
+    filter: grayscale(1);
+}
+
+.profile-img-2 {
+    left: 48px;
+    top: 48px;
+    z-index: 1;
+    filter: grayscale(1);
+}
+
+.profile-img-3 {
+    left: 96px;
+    top: 96px;
     z-index: 2;
 }
 
-.work-item:hover .work-thumb-overlay {
-    opacity: 1;
+.profile-content {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5rem;
+    padding-top: 48px;
 }
 
-.work-overlay-year,
-.work-overlay-title,
-.work-overlay-subtitle {
+.profile-content-inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.profile-heading {
     font-family: "Bona Nova", serif;
+    font-size: clamp(1.75rem, 3vw, 2rem);
     font-weight: 400;
-    letter-spacing: 0.1em;
+    color: #111;
+    letter-spacing: 0.02em;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed #111;
+    width: 100%;
+    margin: 0;
 }
 
-.work-overlay-year {
+.profile-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    color: #111;
+}
+
+.profile-name-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 293px;
+}
+
+.profile-label {
+    font-family: "Bona Nova", serif;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.profile-name {
+    font-family: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: normal;
+}
+
+.profile-text-figma {
+    font-family: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    font-size: 1rem;
+    line-height: normal;
+}
+
+.profile-text-figma p {
+    margin: 0 0 0.35em;
+}
+
+.profile-text-figma p:last-child {
+    margin-bottom: 0;
+}
+
+.profile-view-all {
+    font-family: "Bona Nova", serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #111;
+    text-decoration: none;
+    text-align: right;
+    width: 100%;
+}
+
+.profile-view-all:hover {
+    opacity: 0.6;
+}
+
+@media (max-width: 960px) {
+    .profile {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 3rem 1.5rem;
+    }
+
+    .profile-images {
+        width: 100%;
+        max-width: 520px;
+        margin: 0 auto;
+        height: 0;
+    }
+
+    .profile-img {
+        width: calc(580 / 676 * 100%);
+        height: auto;
+        aspect-ratio: 580 / 387;
+    }
+
+    .profile-img-1 {
+        left: 0;
+        top: 0;
+    }
+
+    .profile-img-2 {
+        left: 48px;
+        top: 48px;
+    }
+
+    .profile-img-3 {
+        left: 96px;
+        top: 96px;
+    }
+
+    .profile-content {
+        max-width: none;
+        padding-top: 2rem;
+        gap: 3rem;
+        align-items: stretch;
+    }
+
+    .profile-view-all {
+        text-align: left;
+    }
+
+    .works {
+        padding: 3rem 1.5rem;
+    }
+
+    .work-item {
+        width: 50%;
+        min-width: 0;
+        border-width: 0 1px 1px 0;
+    }
+
+    .work-item:nth-child(5n + 1),
+    .work-item:nth-child(-n + 5) {
+        border-left-width: 0;
+        border-top-width: 0;
+    }
+
+    .work-item:nth-child(2n + 1) {
+        border-left-width: 1px;
+    }
+
+    .work-item:nth-child(-n + 2) {
+        border-top-width: 1px;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-item {
+        width: 100%;
+        border-width: 0 1px 1px 1px;
+    }
+
+    /* 2列用の「上段だけ top」指定をやめ、1列は先頭セルだけ上線 */
+    .work-item:nth-child(-n + 2) {
+        border-top-width: 0;
+    }
+
+    .work-item:first-child {
+        border-top-width: 1px;
+    }
+}
+
+/* Contact (Figma 1:92) */
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: 4rem 4rem;
+    flex-wrap: wrap;
+}
+
+.contact-title {
+    font-family: "Bona Nova", serif;
+    font-size: clamp(2.5rem, 7vw, 5.875rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #111;
+    flex-shrink: 0;
+    line-height: 1;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.contact-divider {
+    flex-shrink: 0;
+    width: min(200.707px, 28vw);
+    aspect-ratio: 1;
+}
+
+.contact-divider img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 31px;
+    flex-shrink: 0;
+    min-width: min(100%, 320px);
+}
+
+.contact-text {
+    font-family: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    font-size: 1.25rem;
+    line-height: normal;
+    color: #111;
+}
+
+.contact-text p {
+    margin: 0;
+}
+
+.contact-text p + p {
+    margin-top: 0.15em;
+}
+
+.contact-email {
+    font-family: "Bona Nova", serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #111;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px 24px;
+    border: 1px dashed #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .contact {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 3rem 1.5rem;
+    }
+
+    .contact-title {
+        white-space: normal;
+    }
+
+    .contact-divider {
+        width: min(200.707px, 55vw);
+        margin: 0 auto;
+    }
+
+    .contact-content {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .contact-email {
+        white-space: normal;
+        word-break: break-word;
+    }
+}
+
+/* Footer */
+.footer {
+    padding: 3rem;
+    text-align: center;
+}
+
+.page-top {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: "Bona Nova", serif;
+    color: #000;
+}
+
+.page-top:hover {
+    opacity: 0.6;
+}
+
+.page-top-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+}
+
+.page-top-icon img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.page-top-text {
     font-size: 0.75rem;
+    letter-spacing: 0.05em;
 }
 
-.work-overlay-title {
-    font-size: 0.875rem;
+.page-about .page-top-text {
+    font-size: 1rem;
+    color: #111;
 }
 
-.work-overlay-subtitle {
-    font-size: 0.75rem;
+/* ABOUT page (Figma 1:103) */
+.header-nav a[aria-current="page"] {
+    opacity: 0.55;
+}
+
+.about-page {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4rem, 12vw, 12.5rem);
+    padding-bottom: 1rem;
+}
+
+.about-intro-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 0 4rem;
+}
+
+.about-title {
+    font-family: "Bona Nova", serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    color: #111;
+    line-height: 1;
+    margin: 0;
+}
+
+.about-profile.profile {
+    padding: 0;
+    margin: 0;
+}
+
+.about-profile-content {
+    gap: 0;
+}
+
+.about-skills {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8125rem;
+    font-family: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    font-size: 1rem;
+    line-height: normal;
+    color: #111;
+    max-width: 33.625rem;
+}
+
+.about-skills-label,
+.about-skills-text {
+    margin: 0;
+}
+
+.about-values {
+    padding: 0 4rem;
+}
+
+.about-values-title {
+    font-family: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    color: #111;
+    margin: 0 0 1.6875rem;
+    line-height: normal;
+}
+
+.about-values-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.about-value-card {
+    flex: 1 1 240px;
+    min-width: min(100%, 240px);
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-value-frame {
+    aspect-ratio: 1;
+    width: 100%;
+    border: 1px dashed #111;
+    box-sizing: border-box;
+}
+
+.about-value-heading-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.75rem 2rem;
+    color: #111;
+}
+
+.about-value-num {
+    font-family: "Bona Nova", serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.about-value-name {
+    font-family: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: normal;
+    max-width: 18.3125rem;
+}
+
+.about-value-body {
+    font-family: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    font-size: 1rem;
+    line-height: normal;
+    color: #111;
+}
+
+.about-value-body p {
+    margin: 0 0 0.35em;
+}
+
+.about-value-body p:last-child {
+    margin-bottom: 0;
+}
+
+.about-career {
+    padding: 0 4rem;
+}
+
+.about-career-title {
+    font-family: "Bona Nova", serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 400;
+    color: #111;
+    margin: 0 0 5rem;
+    line-height: normal;
+}
+
+.about-timeline {
+    position: relative;
+    padding-top: 0.1rem;
+}
+
+.about-timeline-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(0.1rem + 3.5px);
+    height: 0;
+    margin: 0;
+    border: none;
+    border-top: 1px dashed #111;
+    pointer-events: none;
+}
+
+.about-timeline-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(2rem, 8vw, 7.5rem);
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.about-timeline-item {
+    flex: 1 1 12.5rem;
+    max-width: 20rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-timeline-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+}
+
+.about-timeline-dot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.about-timeline-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4375rem;
+    font-family: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    font-size: 1rem;
+    line-height: normal;
+    color: #111;
+}
+
+.about-timeline-year {
+    margin: 0;
+}
+
+.about-timeline-text {
+    margin: 0;
+}
+
+.about-timeline-text p {
+    margin: 0 0 0.35em;
+}
+
+.about-timeline-text p:last-child {
+    margin-bottom: 0;
+}
+
+.about-contact-block {
+    padding-top: clamp(4rem, 10vw, 7.5rem);
+    padding-bottom: clamp(4rem, 10vw, 7.5rem);
+}
+
+@media (max-width: 960px) {
+    .about-intro-group {
+        padding: 0 1.5rem;
+    }
+
+    .about-values,
+    .about-career {
+        padding: 0 1.5rem;
+    }
+
+    .about-contact-block.contact {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .works-page-contact.contact {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .work-detail-intro,
+    .work-detail-gallery {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .works-page-inner {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+/* WORKS page (Figma 1:311) */
+.works-page {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.works-page-inner {
+    padding: 2.5rem 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.works-page-title {
+    font-family: "Bona Nova", serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    color: #111;
+    margin: 0;
+    line-height: 1;
+}
+
+.works-page-grid {
+    justify-content: center;
+}
+
+.works-page-contact {
+    padding-top: clamp(4rem, 10vw, 7.5rem);
+    padding-bottom: clamp(4rem, 10vw, 7.5rem);
+}
+
+.page-works .page-top-text {
+    font-size: 1rem;
+    color: #111;
+}
+
+/* WORK detail (Figma 1:419) */
+.work-detail {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4rem, 8vw, 7rem);
+    padding-bottom: clamp(4rem, 8vw, 7.5rem);
+}
+
+.work-detail-intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 0 clamp(1.5rem, 8vw, 7.5rem);
+    box-sizing: border-box;
+}
+
+.work-detail-intro-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2.5rem;
+}
+
+.work-detail-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1.375rem;
+    color: #111;
+    font-family: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    max-width: 18rem;
+}
+
+.work-detail-client {
+    margin: 0;
+    font-size: 1rem;
+    line-height: normal;
+}
+
+.work-detail-title-block {
+    font-size: 2rem;
+    line-height: normal;
+}
+
+.work-detail-title-block p {
+    margin: 0;
+}
+
+.work-detail-divider {
+    width: 144px;
+    height: 144px;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.work-detail-divider img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.work-detail-desc {
+    flex: 1 1 280px;
+    min-width: min(100%, 280px);
+    max-width: 400px;
+    font-family: "Zen Old Mincho", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #111;
+}
+
+.work-detail-desc p {
+    margin: 0;
+}
+
+.work-detail-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 3.375rem;
+    padding: 0 clamp(1.5rem, 8vw, 7.5rem);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.work-detail-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.work-detail-back {
+    margin: 0;
+    text-align: center;
+}
+
+.work-detail-back a {
+    font-family: "Bona Nova", serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #111;
+    text-decoration: none;
+}
+
+.work-detail-back a:hover {
+    opacity: 0.6;
+}
+
+.page-work-detail .page-top-text {
+    font-size: 1rem;
+    color: #111;
 }

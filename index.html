@@ -6,59 +6,123 @@
   <title>NISHI KANAMI - DESIGN & ILLUSTRATION</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&family=Zen+Old+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
     <nav class="header-nav">
-      <a href="#">HOME</a>
-      <a href="#">WORKS</a>
-      <a href="#">ABOUT</a>
-      <a href="#">CONTACT</a>
+      <a href="index.html">HOME</a>
+      <a href="works.html">WORKS</a>
+      <a href="about.html">ABOUT</a>
+      <a href="index.html#contact">CONTACT</a>
     </nav>
   </header>
 
   <main>
-    <section class="main-job">
-      <h1 class="main-job-title">MAIN JOB</h1>
-    </section>
+    <div class="top-viewport-hero">
+      <section class="main-job">
+        <h1 class="main-job-title">MAIN JOB</h1>
+      </section>
 
-    <section class="design-section">
-      <p class="design-text">
-        DESIGN<br>
-        &<br>
-        ILLUSTRATION
+      <!-- Figma: node 1-16 https://www.figma.com/design/kTKaPvHE5kTtJ6r1PyapXi/Untitled?node-id=1-16 -->
+      <section class="hero-intro" aria-label="イントロダクション">
+        <div class="hero-intro-inner">
+          <div class="hero-intro-left">
+            <p>DESIGN</p>
+            <p>&</p>
+            <p>ILLUSTRATION</p>
+          </div>
+          <div class="hero-intro-visual">
+            <img src="images/switch/0001.png" alt="" width="224" height="400" loading="lazy" decoding="async">
+          </div>
+          <div class="hero-intro-right">
+            <div class="hero-intro-right-copy">
+              <p>A COLLECTION OF WORKS</p>
+              <p>NISHI KANAMI</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <p class="hero-intro-scroll">
+        <span class="hero-intro-scroll-line">SCROLL TO EXPLORE</span>
+        <span class="hero-intro-scroll-arrow" aria-hidden="true">↓</span>
       </p>
-    </section>
+    </div>
 
-    <section class="collection-section">
-      <p class="collection-caption">A COLLECTION OF WORKS</p>
-      <p class="collection-name">NISHI KANAMI</p>
-    </section>
-
-    <section class="scroll-section">
-      <p class="scroll-indicator">SCROLL TO EXPLORE <span class="arrow">↓</span></p>
-    </section>
-
-    <section class="works">
+    <section class="works" id="works">
       <div class="works-header">
         <h2 class="works-title">WORKS</h2>
-        <a href="#" class="view-all">VIEW ALL WORKS →</a>
+        <a href="works.html" class="view-all">VIEW ALL WORKS →</a>
       </div>
+      <!-- Figma 1:28 https://www.figma.com/design/kTKaPvHE5kTtJ6r1PyapXi/Untitled?node-id=1-28 -->
       <div class="works-grid">
-        <a href="#" class="work-item"><span class="work-num">01</span><div class="work-thumb"><div class="work-thumb-overlay"><span class="work-overlay-year">2023</span><span class="work-overlay-title">COEDO PRISM</span><span class="work-overlay-subtitle">PACKAGE DESIGN</span></div></div></a>
-        <a href="#" class="work-item"><span class="work-num">02</span><div class="work-thumb"><div class="work-thumb-overlay"><span class="work-overlay-year">2023</span><span class="work-overlay-title">COEDO PRISM</span><span class="work-overlay-subtitle">PACKAGE DESIGN</span></div></div></a>
-        <a href="#" class="work-item"><span class="work-num">03</span><div class="work-thumb"><div class="work-thumb-overlay"><span class="work-overlay-year">2023</span><span class="work-overlay-title">COEDO PRISM</span><span class="work-overlay-subtitle">PACKAGE DESIGN</span></div></div></a>
-        <a href="#" class="work-item"><span class="work-num">04</span><div class="work-thumb"><div class="work-thumb-overlay"><span class="work-overlay-year">2023</span><span class="work-overlay-title">COEDO PRISM</span><span class="work-overlay-subtitle">PACKAGE DESIGN</span></div></div></a>
-        <a href="#" class="work-item"><span class="work-num">05</span><div class="work-thumb"><div class="work-thumb-overlay"><span class="work-overlay-year">2023</span><span class="work-overlay-title">COEDO PRISM</span><span class="work-overlay-subtitle">PACKAGE DESIGN</span></div></div></a>
-        <a href="#" class="work-item"><span class="work-num">06</span><div class="work-thumb"><div class="work-thumb-overlay"><span class="work-overlay-year">2023</span><span class="work-overlay-title">COEDO PRISM</span><span class="work-overlay-subtitle">PACKAGE DESIGN</span></div></div></a>
-        <a href="#" class="work-item"><span class="work-num">07</span><div class="work-thumb"><div class="work-thumb-overlay"><span class="work-overlay-year">2023</span><span class="work-overlay-title">COEDO PRISM</span><span class="work-overlay-subtitle">PACKAGE DESIGN</span></div></div></a>
-        <a href="#" class="work-item work-item-limited"><span class="work-num">08</span><div class="work-thumb work-thumb-limited"><span class="work-limited-text">LIMITED</span></div></a>
-        <a href="#" class="work-item work-item-limited"><span class="work-num">09</span><div class="work-thumb work-thumb-limited"><span class="work-limited-text">LIMITED</span></div></a>
-        <a href="#" class="work-item work-item-limited"><span class="work-num">10</span><div class="work-thumb work-thumb-limited"><span class="work-limited-text">LIMITED</span></div></a>
+        <a href="#" class="work-item"><span class="work-num">01</span><div class="work-thumb"><img class="work-thumb-img" src="images/works/01.png" alt="作品 01"></div></a>
+        <a href="#" class="work-item"><span class="work-num">02</span><div class="work-thumb"><img class="work-thumb-img" src="images/works/02.png" alt="作品 02"></div></a>
+        <a href="#" class="work-item"><span class="work-num">03</span><div class="work-thumb"><img class="work-thumb-img" src="images/works/03.png" alt="作品 03"></div></a>
+        <a href="#" class="work-item"><span class="work-num">04</span><div class="work-thumb"><img class="work-thumb-img" src="images/works/04.png" alt="作品 04"></div></a>
+        <a href="#" class="work-item"><span class="work-num">05</span><div class="work-thumb"><img class="work-thumb-img" src="images/works/05.png" alt="作品 05"></div></a>
+        <a href="work-coedo-prism.html" class="work-item"><span class="work-num">06</span><div class="work-thumb"><img class="work-thumb-img" src="images/works/06.png" alt="作品 06"></div></a>
+        <a href="#" class="work-item"><span class="work-num">07</span><div class="work-thumb"><img class="work-thumb-img" src="images/works/07.png" alt="作品 07"></div></a>
+        <a href="#" class="work-item work-item-limited"><span class="work-num">08</span><div class="work-thumb work-thumb-limited"><img class="work-limited-line" src="images/works/limited-diagonal.svg" alt="" aria-hidden="true"><span class="work-limited-text">limited</span></div></a>
+        <a href="#" class="work-item work-item-limited"><span class="work-num">09</span><div class="work-thumb work-thumb-limited"><img class="work-limited-line" src="images/works/limited-diagonal.svg" alt="" aria-hidden="true"><span class="work-limited-text">limited</span></div></a>
+        <a href="#" class="work-item work-item-limited"><span class="work-num">10</span><div class="work-thumb work-thumb-limited"><img class="work-limited-line" src="images/works/limited-diagonal.svg" alt="" aria-hidden="true"><span class="work-limited-text">limited</span></div></a>
+      </div>
+    </section>
+
+    <!-- Figma 1:76 https://www.figma.com/design/kTKaPvHE5kTtJ6r1PyapXi/Untitled?node-id=1-76 -->
+    <section class="profile">
+      <div class="profile-images">
+        <img src="images/IMG_4295.jpg" alt="" class="profile-img profile-img-1">
+        <img src="images/IMG_4295.jpg" alt="" class="profile-img profile-img-2">
+        <img src="images/IMG_4295.jpg" alt="プロフィール写真" class="profile-img profile-img-3">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-inner">
+          <h2 class="profile-heading">PROFILE</h2>
+          <div class="profile-body">
+            <div class="profile-name-block">
+              <p class="profile-label">My name is</p>
+              <p class="profile-name">西 香菜美</p>
+            </div>
+            <div class="profile-text profile-text-figma">
+              <p>2000年生まれ。デザイナー・イラストレーター。</p>
+              <p>美大でグラフィックデザインを専攻し、卒業後は広告制作会社へ。</p>
+              <p>ダークな世界観を中心とした、キャラクターイラストが得意。</p>
+            </div>
+          </div>
+        </div>
+        <a href="#" class="profile-view-all">VIEW ALL PROFILE→</a>
+      </div>
+    </section>
+
+    <!-- Figma 1:92 https://www.figma.com/design/kTKaPvHE5kTtJ6r1PyapXi/Untitled?node-id=1-92 -->
+    <section class="contact" id="contact">
+      <h2 class="contact-title">CONTACT</h2>
+      <div class="contact-divider" aria-hidden="true">
+        <img src="images/contact/contact-diagonal.svg" alt="" width="201" height="201">
+      </div>
+      <div class="contact-content">
+        <div class="contact-text">
+          <p>お仕事のご依頼・ご相談につきましては、</p>
+          <p>下記のメールアドレス宛にご連絡ください。</p>
+        </div>
+        <p class="contact-email">gakido2457@gmail.com</p>
       </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <button type="button" class="page-top" aria-label="ページトップへ">
+      <span class="page-top-icon"><img src="images/arrow-pagetop.svg" alt="" width="48" height="48" decoding="async"></span>
+      <span class="page-top-text">PAGE TOP</span>
+    </button>
+  </footer>
+
+  <script>
+    document.querySelector('.page-top').addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
